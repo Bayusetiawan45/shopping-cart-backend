@@ -54,7 +54,8 @@ exports.login = async (req, res) => {
       access_token,
       user: {
         name: user.name,
-        email: user.email
+        email: user.email,
+        id: user._id
       }
     })
   } catch (err) {
@@ -63,6 +64,16 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+exports.logout = async (req, res) => {
+  try {
+    
+  } catch (err) {
+    res.status(500).send({
+      message: err.message || 'Some error while logout',
+    });
+  }
+}
 
 exports.findOne = async (req, res) => {
   try {
