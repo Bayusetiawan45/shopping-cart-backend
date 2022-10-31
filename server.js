@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const mongoose = require('mongoose')
-const db = require('./models/index')
+const connectDB = require('./utilities/connectDB')
 
 require('dotenv').config()
 
@@ -14,19 +13,7 @@ app.use(express.urlencoded({
   extended: true
 }))
 
-db.mongoose
-  .connect(db.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    retryWrites: true
-  })
-  .then(() => {
-    console.log('Connected to MongoDb');
-  })
-  .catch((err) => {
-    console.log(`Cannot connect to the database, ${err}`);
-    process.exit()
-  })
+connectDB()
 
 app.get('/', (req, res) => {
   res.json({
@@ -35,6 +22,7 @@ app.get('/', (req, res) => {
 })
 
 require('./routes/product.route')(app)
+require('./routes/user.route')(app)
 
 app.listen(port, () => {
   console.log(`Listening or port: ${port}`);
