@@ -14,6 +14,11 @@ module.exports = (mongoose) => {
       type: Array,
       required: true,
     },
+    stock: {
+      type: Number,
+      required: true,
+      trim: true,
+    },
   }, {timestamps: true})
 
   schema.method("toJSON", function() {

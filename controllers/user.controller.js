@@ -65,16 +65,6 @@ exports.login = async (req, res) => {
   }
 };
 
-exports.logout = async (req, res) => {
-  try {
-    
-  } catch (err) {
-    res.status(500).send({
-      message: err.message || 'Some error while logout',
-    });
-  }
-}
-
 exports.findOne = async (req, res) => {
   try {
     const id = req.params.id

@@ -17,7 +17,8 @@ exports.create = (req, res) => {
   const product = new Product({
     title: req.body.title,
     price: req.body.price,
-    images: req.body.images
+    images: req.body.images,
+    stock: req.body.stock,
   })
   product.save(product)
   .then((result) => {

@@ -15,7 +15,7 @@ app.use(express.urlencoded({
 
 connectDB()
 
-app.get('/', (req, res) => {
+app.get('/', Middleware ,(req, res) => {
   res.json({
     message: 'Welcome to shopping cart backend'
   })
@@ -23,6 +23,11 @@ app.get('/', (req, res) => {
 
 require('./routes/product.route')(app)
 require('./routes/user.route')(app)
+
+function Middleware(res, res, next) {
+  console.log('middleare logged')
+  next()
+}
 
 app.listen(port, () => {
   console.log(`Listening or port: ${port}`);
