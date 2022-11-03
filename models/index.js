@@ -8,5 +8,6 @@ db.mongoose = mongoose
 db.url = dbConfig.url
 db.products = require('./product.model')(mongoose)
 db.users = require('./user.model')(mongoose)
+db.carts = require('./cart.model')(mongoose)
 
 module.exports = db

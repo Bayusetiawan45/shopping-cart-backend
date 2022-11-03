@@ -23,6 +23,7 @@ app.get('/', Middleware ,(req, res) => {
 
 require('./routes/product.route')(app)
 require('./routes/user.route')(app)
+require('./routes/cart.route')(app)
 
 function Middleware(res, res, next) {
   console.log('middleare logged')
