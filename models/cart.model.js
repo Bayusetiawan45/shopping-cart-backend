@@ -5,19 +5,22 @@ module.exports = (mongoose) => {
       required: true,
       trim: true,
     },
-    product_id: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-      trim: true,
-    },
+    cart_items: [
+      {
+        product: {
+          type: String,
+          required: true,
+          trim: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+          trim: true,
+        },
+      }
+    ],
     total_payment: {
       type: Number,
-      required: true,
       trim: true,
     },
   }, {timestamps: true})

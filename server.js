@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const connectDB = require('./utilities/connectDB')
+const { auth } = require('./middleware/auth')
 
 require('dotenv').config()
 
@@ -15,20 +16,17 @@ app.use(express.urlencoded({
 
 connectDB()
 
-app.get('/', Middleware ,(req, res) => {
+app.get('/',(req, res) => {
   res.json({
     message: 'Welcome to shopping cart backend'
   })
 })
 
+
 require('./routes/product.route')(app)
 require('./routes/user.route')(app)
+app.use(auth)
 require('./routes/cart.route')(app)
-
-function Middleware(res, res, next) {
-  console.log('middleare logged')
-  next()
-}
 
 app.listen(port, () => {
   console.log(`Listening or port: ${port}`);
